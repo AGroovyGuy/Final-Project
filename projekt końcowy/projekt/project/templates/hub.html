@@ -1,0 +1,12 @@
+{% extends "base.html" %}}
+
+{% block content %}
+
+{% for category in categories %}
+
+<a href = "{%  url 'tymczasowy' id=category.pk  %}" class="btn btn-dark">{{ category }}</a><br>
+{% endfor %}
+
+<a target=blank href = "{% url 'randomjelito' %}" class="btn btn-dark">jelito</a>
+
+{% endblock %}

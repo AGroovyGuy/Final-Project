@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if request.user.is_superuser %}
+    <a href = "{%  url 'add' id=id %}" class="btn btn-light">DODAJ</a><br>
+{% endif %}
+
+{% for passtime in passtimelist %}
+
+{% if passtime.pk == 9 %}
+    <a href = "{%  url 'randomsubpage' id=passtime.pk  %}" class="btn btn-dark">{{ passtime }}</a><br>
+    {% if request.user.is_superuser %}
+    <a href = "{%  url 'deleteanother' id=passtime.id  %}" class="btn btn-inverse"><i class="fa fa-trash" aria-hidden="true"></i>
+</a><br><br>
+    {% endif %}
+{%  else  %}
+    <a target=blank href = "{%  url 'randomsubpage' id=passtime.pk  %}" class="btn btn-dark">{{ passtime }}</a><br>
+    {% if request.user.is_superuser %}
+    <a href = "{%  url 'deleteanother' id=passtime.id  %}" class="btn btn-inverse"><i class="fa fa-trash" aria-hidden="true"></i>
+    </a><br><br>
+    {% endif %}
+
+{% endif %}
+
+{% endfor %}
+{% endblock %}
+
+
+

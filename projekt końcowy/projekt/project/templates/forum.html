@@ -1,0 +1,14 @@
+{% extends "base.html" %}}
+
+{% block content %}
+
+{% include "form.html" %}
+<p>
+{% for post in posts %}
+    <p>{{ post.contents }} <br> {{ post.postdate }} <br> {{ post.op.username }}</p>
+{% if request.user.is_superuser %}
+    <a href = "{%  url 'delete' id=post.id  %}" class="btn btn-dark">USUŃ</a><br><br>
+{% endif %}
+{% endfor %}
+</p>
+{% endblock %}
